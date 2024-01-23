@@ -44,6 +44,8 @@ ax.xaxis.set_major_formatter(xfmt)
 print('Plotting!')
 for user, uindicies in indicies.items():
 	ucounts = counts[user]
+	if len(uindicies) < 1:
+		continue
 
 	plt.plot(uindicies, ucounts, color=colors[user] if user in colors else 'black')
 
