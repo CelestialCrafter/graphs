@@ -29,18 +29,18 @@ indicies = {processException(user): dtify(data[data[:, 0] == processException(us
 counts = {user: np.arange(1, indicies[user].shape[0] + 1) for user in [processException(user) for user in users]}
 
 colors = {
-	'celestialexe': 'plum',
-	'pdbaroni': 'royalblue',
-	'normalcat_': 'red',
-	'undrscre': 'darkorange',
-	'17xr': 'limegreen',
-	'itscattybro': 'darkviolet',
-	'morilis': 'sienna',
-	'mcsaucynuggets': 'darkviolet',
-	'frozenremnant': 'lightcoral',
-	'baccon.': 'navy',
-	'clyde': 'crimson',
-	'brixk': 'yellowgreen'
+  'celestialexe': 'plum',
+  'pdbaroni': 'royalblue',
+  'normalcat_': 'red',
+  'undrscre': 'darkorange',
+  '17xr': 'limegreen',
+  'itscattybro': 'darkviolet',
+  'morilis': 'sienna',
+  'mcsaucynuggets': 'darkviolet',
+  'frozenremnant': 'lightcoral',
+  'baccon.': 'navy',
+  'clyde': 'crimson',
+  'brixk': 'yellowgreen'
 }
 
 ax = plt.gca()
