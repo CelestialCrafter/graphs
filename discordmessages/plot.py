@@ -13,10 +13,12 @@ def processException(user):
 	# Portugla Exceptions
 	if name == 'iloveyanna':
 		name = '17xr'
+	elif name == 'agaa13':
+		name = '17xr'
 	elif name == 'celestialexe_':
 		name = 'celestialexe'
 	elif uid == '456226577798135808':
-		name = 'nikolus_'
+		name = 'undrscre'
 
 	return name
 
@@ -27,14 +29,18 @@ indicies = {processException(user): dtify(data[data[:, 0] == processException(us
 counts = {user: np.arange(1, indicies[user].shape[0] + 1) for user in [processException(user) for user in users]}
 
 colors = {
-  'celestialexe': 'plum',
-  'pdbaroni': 'royalblue',
-  'normalcat_': 'red',
-  'nikolus_': 'darkorange',
-  '17xr': 'limegreen',
-  'itscattybro': 'darkviolet',
-  'morilis': 'sienna',
-  'mcsaucynuggets': 'darkviolet'
+	'celestialexe': 'plum',
+	'pdbaroni': 'royalblue',
+	'normalcat_': 'red',
+	'undrscre': 'darkorange',
+	'17xr': 'limegreen',
+	'itscattybro': 'darkviolet',
+	'morilis': 'sienna',
+	'mcsaucynuggets': 'darkviolet',
+	'frozenremnant': 'lightcoral',
+	'baccon.': 'navy',
+	'clyde': 'crimson',
+	'brixk': 'yellowgreen'
 }
 
 ax = plt.gca()
