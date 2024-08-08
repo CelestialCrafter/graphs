@@ -10,27 +10,17 @@ artists = np.unique(data[:, 0])
 
 dtify = np.frompyfunc(lambda timestamp: dt.datetime.fromtimestamp(int(timestamp)), 1, 1)
 
-def processTimes(timestamps):
-	previousTime = 0
+def processTimes(times):
 	hours = [dt.timedelta(seconds=0)]
 
-	for timestamp in timestamps:
-		if timestamp == timestamps[0]:
-			previousTime = timestamp
-			continue
+	for time in times:
+		hours.append(hours[-1] + dt.timedelta(milliseconds=int(time)))
 
-		difference = (timestamp - previousTime)
-		if difference.total_seconds() > 6 * 60:
-			hours.append(hours[-1])
-		else:
-			hours.append(hours[-1] + difference)
+	return hours[1:]
 
-		previousTime = timestamp
-	return hours
-
-print('Processing Plays...')
-indicies = {artist: dtify(data[data[:, 0] == artist][:, 1]) for artist in artists}
-counts = {artist: np.arange(1, indicies[artist].shape[0] + 1) for artist in artists}
+print('Processing Tracks...')
+indicies = {artist: dtify(data[data[:, 0] == artist][:, 2]) for artist in artists}
+counts = {artist: processTimes(data[data[:, 0] == artist][:, 1]) for artist in artists}
 
 colors = {
   'NIKI': 'plum',
@@ -47,8 +37,9 @@ print('Plotting!')
 for artist, pindicies in indicies.items():
 	pcounts = counts[artist]
 
-	plt.plot(pindicies, pcounts, color=colors[artist] if artist in colors else 'black')
+	ptime = [time_delta.total_seconds() / 60 / 60 for time_delta in pcounts]
+	plt.plot(pindicies, ptime, color=colors[artist] if artist in colors else 'black')
 
-	plt.text(pindicies[-1], pcounts[-1], f'{artist}\n{str(pcounts[-1])}')
+	plt.text(pindicies[-1], ptime[-1], f'{artist}\n{str(pcounts[-1])}')
 
 plt.show()
