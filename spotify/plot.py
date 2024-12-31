@@ -35,6 +35,8 @@ ax.xaxis.set_major_formatter(xfmt)
 
 print('Plotting!')
 for artist, pindicies in indicies.items():
+	#if artist != 'NIKI' and artist != 'keshi' and artist != 'yorushika':
+	#	continue
 	pcounts = counts[artist]
 
 	ptime = [time_delta.total_seconds() / 60 / 60 for time_delta in pcounts]
